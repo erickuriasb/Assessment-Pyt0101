@@ -14,7 +14,7 @@ Bonus task 2: Develop a simple UI that can be used directly from the web browser
 
 1. You need an instance of MySQL Server running in your localhost
 2. Create a new data base and name it: prueba-emonics
-3. Create a Python Virtual Enviroment i the project folder
+3. Create a Python Virtual Enviroment in the project folder
 ```bash
 #Windows, Linux and Mac with venv
 python -m venv venv
