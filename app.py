@@ -1,8 +1,15 @@
-from fastapi import FastAPI
+from re import template
+from fastapi import FastAPI, Request
+from requests import request
+from watchgod import RegExpWatcher
 from routes.employee import employee
+from crud.employee import EmployeeCRUD
+from schemas.employee import Employee
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 
 app = FastAPI()
-
+templates = Jinja2Templates(directory="templates")
 '''
 "The task is to develop a simple API using Python FASTAPI framework that would process input data, communicate with a database andreturn results to the client.Employee API -will support 2 operations:
 
@@ -18,6 +25,21 @@ Bonus task 2: Develop a simple UI that can be used directly from the web browser
 '''
 app.include_router(employee)
 
-@app.get("/")
-def root():
-    return "Hello World"
+@app.get("/", tags=["web-app"])
+def root(request: Request):
+    employees = EmployeeCRUD.get_employees()
+    return templates.TemplateResponse("inicio.html", {"request": request, "listaded":employees})
+
+@app.post("/create_employee/", tags=["web-app"])
+async def post_new_employee(request: Request):
+    formdata = await request.form()
+    employee = {
+        "emp_name" : formdata['emp_name']
+    }
+    response = EmployeeCRUD.create_employee(employee)
+    return RedirectResponse("/", 303)
+
+@app.get("/delete_employee/{emp_id}", tags=["web-app"])
+def delete_employee(request: Request, emp_id:str):
+    response = EmployeeCRUD.delete_employee(emp_id)
+    return RedirectResponse("/", 303)
