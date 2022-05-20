@@ -38,7 +38,13 @@ pip install requisites.txt
 ```bash
 uvicorn app:app --reload
 ```
-5. open the next url in your browser and check the API endpoints works
+5. open the next url in your browser and check the API endpoints working
 ```bash
 localhost:8000/docs/
 ```
+
+## Web Interface
+  
+Exist a basic user interface in the root path: localhost:8000/. You can create new records of Employees and delete them one by one.
+  
+![image](images/img1.JPG)

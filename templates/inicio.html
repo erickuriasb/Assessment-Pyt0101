@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Employees</title>
+</head>
+<body>
+    <main class="container">
+        <h1 class="display-4">
+            Employees
+        </h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:5%;">Id</th>
+                    <th scope="col">Employee</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in listaded %}
+                    <tr scope="row">
+                        <td>{{item[0]}}</td>
+                        <td>{{item[1]}}</td>
+                        <td><a href="/delete_employee/{{item[0]}}"><button class="btn btn-danger">Delete</button></a></td>
+                    </tr>
+
+                {% endfor %}
+                <tr scope="row">
+                    <form action="create_employee/" method="POST">
+                        <td>Add</td>
+                        <td><input type="text" name="emp_name" id="" class="form-control" required></td>
+                        <td><button class="btn btn-primary" type="submit">Create New</button></td>
+                    </form>
+                </tr>
+            </tbody>
+            
+        </table>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>
