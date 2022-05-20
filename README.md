@@ -13,21 +13,28 @@ Bonus task 2: Develop a simple UI that can be used directly from the web browser
 ## Installation
 
 1. You need an instance of MySQL Server running in your localhost
+2. Create a new data base and name it: prueba-emonics
+3. Create a Python Virtual Enviroment i the project folder
+```bash
+#Windows, Linux and Mac with venv
+python -m venv venv
+```
 2. Activate the virtual enviroment for __Python 3.10__   
 
-Linux and Mac:
 ```bash
+
+#Linux and Mac:
 source venv/bin/activate
-```
-Windows:
-```bash
+
+#Windows:
 venv/Scripts/activate.bat
+
 ```
-3. Install dependences in the vistual enviroment  
+3. Install dependences in the virtual enviroment  
 ```bash
 pip install requisites.txt
 ```
-4. Run the server uvicorn
+4. Run the server Uvicorn
 ```bash
 uvicorn app:app --reload
 ```
